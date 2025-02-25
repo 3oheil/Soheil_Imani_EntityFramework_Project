@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 namespace Soheil_Imani_EntityFramework_Project
 {
     public class Program
@@ -5,6 +7,11 @@ namespace Soheil_Imani_EntityFramework_Project
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            // connection Project to Sqlite Datebase.
+            builder.Services.AddDbContext<BookShop_Context>(options =>
+            options.UseSqlite("Data Source=bookstore.db"));
+            
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
